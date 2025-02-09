@@ -142,14 +142,13 @@
     </style>
 </head>
 <body>
-    <!-- Barre latérale -->
-    <div class="side-bar">
+     <!-- Barre latérale -->
+     <div class="side-bar">
         <h2>Menu</h2>
         <a href="../index.html"><button>Home</button></a>
         <a href="myQuiz.html"><button>My Quizzes</button></a>
         <a href="profile.html"><button>Profile</button></a>
         <button id="openSettings">⚙️ Paramètres</button>
-
     </div>
 
     <!-- Contenu principal -->
@@ -172,6 +171,7 @@
             <tbody></tbody>
         </table>
     </div>
+
     <div id="settingsModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeSettings">&times;</span>
@@ -179,25 +179,19 @@
             <form id="editProfileForm">
                 <label for="editFullName">Nom complet :</label>
                 <input type="text" id="editFullName" required>
-    
+
                 <label for="editEmail">Email :</label>
                 <input type="email" id="editEmail" required>
-    
+
                 <label for="editProfilePic">URL de la photo de profil :</label>
                 <input type="text" id="editProfilePic">
-    
+
                 <button type="submit">Enregistrer</button>
             </form>
         </div>
     </div>
-    
 
     <script src="../app.js"></script>
-    <script>
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            loadProfile();
-        });
-    </script>
+    
 </body>
 </html>

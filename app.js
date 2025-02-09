@@ -38,7 +38,23 @@ const users = [
     }
 ];
 
-// Fonction pour charger les informations du profil après connexion
+// Fonction d'authentification
+function authenticateUser(username, password) {
+    console.log("Vérification des identifiants...");
+    
+    // Rechercher l'utilisateur correspondant
+    const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
+
+    if (user) {
+        console.log("Authentification réussie");
+        return user;
+    } else {
+        console.log("Authentification échouée");
+        return null;
+    }
+}
+
+// Fonction pour charger les informations du profil
 function loadProfile() {
     const userNameElement = document.getElementById("userName");
     const userFullNameElement = document.getElementById("userFullName");
@@ -70,22 +86,6 @@ function loadProfile() {
     }
 }
 
-// Fonction d'authentification
-function authenticateUser(username, password) {
-    console.log("Vérification des identifiants...");
-    
-    // Rechercher l'utilisateur correspondant
-    const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
-
-    if (user) {
-        console.log("Authentification réussie");
-        return user;
-    } else {
-        console.log("Authentification échouée");
-        return null;
-    }
-}
-
 // Gestion du formulaire de connexion
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("loginForm");
@@ -97,16 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            console.log("Tentative de connexion avec:", username);
+            console.log("Tentative de connexion avec:", username, password);  // Vérification des valeurs
 
             const user = authenticateUser(username, password);
 
             if (user) {
-                // Stocker les données de l'utilisateur connecté
+                // Stocker les données de l'utilisateur connecté dans sessionStorage
                 sessionStorage.setItem("loggedUser", JSON.stringify(user));
-
-                // Charger les infos du profil
-                loadProfile();
+                console.log("Utilisateur connecté:", JSON.parse(sessionStorage.getItem("loggedUser")));  // Vérification
 
                 // Redirection vers la page de profil
                 window.location.href = "profile.html";
@@ -122,6 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
         loadProfile();
     }
 });
+
+// Fonction pour charger et modifier les données du profil
 document.addEventListener("DOMContentLoaded", function () {
     const settingsModal = document.getElementById("settingsModal");
     const openSettingsBtn = document.getElementById("openSettings");
