@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz - Recallify</title>
+    <link rel="stylesheet" href="../css/createQuiz.css">
+    <script type="module" src="../app.js" defer></script>
+</head>
+<body>
+    <div class="side-bar">
+        <h2>Menu</h2>
+        <a href="../index.html"><button>Home</button></a>
+        <a href="myQuiz.html"><button>My Quizzes</button></a>
+        <a href="profile.html"><button>Profile</button></a>
+    </div>
+
+    <div class="content">
+        <header>
+            <h1>Create a Quiz</h1>
+        </header>
+
+        <form id="quizForm">
+            <!-- Title of the Quiz -->
+            <div class="form-group">
+                <label for="quizTitle">Quiz Title:</label>
+                <input type="text" id="quizTitle" name="quizTitle" placeholder="Enter quiz title" required>
+            </div>
+
+            <!-- Description of the Quiz -->
+            <div class="form-group">
+                <label for="quizDescription">Quiz Description:</label>
+                <textarea id="quizDescription" name="quizDescription" placeholder="Enter quiz description" required></textarea>
+            </div>
+
+            <!-- Questions -->
+            <div id="questionsContainer">
+                <div class="question-group">
+                    <label for="question1">Question 1:</label>
+                    <input type="text" id="question1" name="questions[]" placeholder="Enter question" required>
+
+                    <label for="answer1a">Option A:</label>
+                    <input type="text" id="answer1a" name="answers[0][]" placeholder="Enter option A" required>
+
+                    <label for="answer1b">Option B:</label>
+                    <input type="text" id="answer1b" name="answers[0][]" placeholder="Enter option B" required>
+
+                    <label for="answer1c">Option C:</label>
+                    <input type="text" id="answer1c" name="answers[0][]" placeholder="Enter option C">
+
+                    <label for="answer1d">Option D:</label>
+                    <input type="text" id="answer1d" name="answers[0][]" placeholder="Enter option D">
+
+                    <label for="correctAnswer1">Correct Answer:</label>
+                    <select id="correctAnswer1" name="correctAnswers[]" required>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Button to Add More Questions -->
+            <button type="button" id="addQuestionBtn">+ Add Another Question</button>
+
+            <!-- Save Button -->
+            <button type="button" id="saveQuizBtn">Save Quiz</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const saveQuizBtn = document.getElementById("saveQuizBtn");
+            const quizForm = document.getElementById("quizForm");
+
+            // Fonction pour enregistrer le quiz
+            saveQuizBtn.addEventListener("click", (event) => {
+                event.preventDefault(); // Empêcher la soumission par défaut du formulaire
+
+                // Récupérer les valeurs du formulaire
+                const quizTitle = document.getElementById("quizTitle").value;
+                const quizDescription = document.getElementById("quizDescription").value;
+
+                const questions = [];
+                const answers = [];
+                const correctAnswers = [];
+
+                // Parcourir les questions et réponses
+                const questionGroups = document.querySelectorAll(".question-group");
+                questionGroups.forEach((group, index) => {
+                    const question = group.querySelector(`#question${index + 1}`).value;
+                    const optionA = group.querySelector(`#answer${index + 1}a`).value;
+                    const optionB = group.querySelector(`#answer${index + 1}b`).value;
+                    const optionC = group.querySelector(`#answer${index + 1}c`).value;
+                    const optionD = group.querySelector(`#answer${index + 1}d`).value;
+                    const correctAnswer = group.querySelector(`#correctAnswer${index + 1}`).value;
+
+                    // Ajouter la question et les réponses dans les tableaux
+                    questions.push(question);
+                    answers.push([optionA, optionB, optionC, optionD]);
+                    correctAnswers.push(correctAnswer);
+                });
+
+                // Créer l'objet quiz
+                const quizData = {
+                    title: quizTitle,
+                    description: quizDescription,
+                    questions: questions,
+                    answers: answers,
+                    correctAnswers: correctAnswers
+                };
+
+                // Vous pouvez maintenant enregistrer `quizData` dans le localStorage ou l'envoyer à un serveur
+                console.log(quizData); // Affiche le quiz dans la console pour vérification
+
+                // Pour l'exemple, on va afficher une alerte confirmant que le quiz est enregistré
+                alert("Quiz saved successfully!");
+
+                // Optionnellement, réinitialisez le formulaire
+                quizForm.reset();
+            });
+
+            // Ajouter une nouvelle question
+            document.getElementById("addQuestionBtn").addEventListener("click", () => {
+                const questionsContainer = document.getElementById("questionsContainer");
+                const newQuestionGroup = document.createElement("div");
+                newQuestionGroup.classList.add("question-group");
+
+                const questionCount = questionsContainer.children.length + 1;
+
+                newQuestionGroup.innerHTML = `
+                    <label for="question${questionCount}">Question ${questionCount}:</label>
+                    <input type="text" id="question${questionCount}" name="questions[]" placeholder="Enter question" required>
+
+                    <label for="answer${questionCount}a">Option A:</label>
+                    <input type="text" id="answer${questionCount}a" name="answers[${questionCount - 1}][]" placeholder="Enter option A" required>
+
+                    <label for="answer${questionCount}b">Option B:</label>
+                    <input type="text" id="answer${questionCount}b" name="answers[${questionCount - 1}][]" placeholder="Enter option B" required>
+
+                    <label for="answer${questionCount}c">Option C:</label>
+                    <input type="text" id="answer${questionCount}c" name="answers[${questionCount - 1}][]" placeholder="Enter option C">
+
+                    <label for="answer${questionCount}d">Option D:</label>
+                    <input type="text" id="answer${questionCount}d" name="answers[${questionCount - 1}][]" placeholder="Enter option D">
+
+                    <label for="correctAnswer${questionCount}">Correct Answer:</label>
+                    <select id="correctAnswer${questionCount}" name="correctAnswers[]" required>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                `;
+
+                questionsContainer.appendChild(newQuestionGroup);
+            });
+        });
+    </script>
+</body>
+</html>

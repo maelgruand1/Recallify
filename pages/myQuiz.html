@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recallify | My Quizzes</title>
+    <link rel="stylesheet" href="../css/myQuiz.css">
+    <script type="module" src="../app.js" defer></script>
+</head>
+<body>
+    <div class="side-bar">
+        <h2>Menu</h2>
+        <a href="../index.html"><button>Home</button></a>
+        <a href="myQuiz.html"><button>My Quizzes</button></a>
+        <a href="profile.html"><button>Profile</button></a>
+    </div>
+    
+    <div class="content">
+        <header>
+            <h1>My Quizzes</h1>
+        </header>
+
+        <!-- Bouton pour créer un quiz -->
+        <button class="create-quiz-btn" id="openModal">+ Create a Quiz</button>
+
+        <!-- Modal de création de quiz -->
+        <div id="quizModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Create a Quiz</h2>
+                <label for="quizTopic">Quiz Topic:</label>
+                <input type="text" id="quizTopic" placeholder="Enter a topic" required>
+                <button id="createQuiz">Create</button>
+            </div>
+        </div>
+
+        <!-- Section d'importation de fichier -->
+        <button id="importBtn">Import Notes</button> <!-- Bouton pour importer -->
+        
+        <div id="importSection" style="display:none;">
+            <h3>Import Notes</h3>
+            <input type="file" id="fileInput" accept=".md, .pdf">
+            <button id="downloadBtn" style="display: none;">Download</button>
+            <h4>Preview</h4>
+            <div id="preview"></div>
+        </div>
+    </div>
+
+    <script src="../js/myQuiz.js" defer></script>
+    <script>
+        // Script pour afficher la section d'importation
+        document.getElementById("importBtn").addEventListener("click", function() {
+            document.getElementById("importSection").style.display = "block";
+            document.getElementById("importBtn").style.display = "none";
+        });
+
+        // Modal de création de quiz
+        const modal = document.getElementById("quizModal");
+        const openModal = document.getElementById("openModal");
+        const closeModal = document.getElementById("closeModal");
+
+        // Ouvrir le modal
+        openModal.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Fermer le modal
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Fermer le modal si l'utilisateur clique à l'extérieur
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/importNotes.js" defer></script>
+</body>
+</html>

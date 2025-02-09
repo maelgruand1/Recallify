@@ -1,0 +1,362 @@
+/* Reset des marges et des paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    background-color: #f4f6f8;
+}
+
+/* Sidebar */
+.side-bar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;/* createQuiz.css */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .side-bar {
+        width: 200px;
+        background-color: #2c3e50;
+        padding: 20px;
+        color: white;
+    }
+    
+    .side-bar h2 {
+        text-align: center;
+    }
+    
+    .side-bar button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: #34495e;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .side-bar button:hover {
+        background-color: #1abc9c;
+    }
+    
+    .content {
+        flex: 1;
+        padding: 20px;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    form {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    textarea {
+        height: 100px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #1abc9c;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    
+    button:hover {
+        background-color: #16a085;
+    }
+    
+    padding: 30px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+}
+
+.side-bar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.side-bar button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.side-bar button:hover {
+    background-color: #1abc9c;
+}
+
+/* Main content area */
+.content {
+    margin-left: 250px;
+    padding: 40px;
+    width: 100%;
+}
+
+header {/* createQuiz.css */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .side-bar {
+        width: 200px;
+        background-color: #2c3e50;
+        padding: 20px;
+        color: white;
+    }
+    
+    .side-bar h2 {
+        text-align: center;
+    }
+    
+    .side-bar button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: #34495e;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .side-bar button:hover {
+        background-color: #1abc9c;
+    }
+    
+    .content {
+        flex: 1;
+        padding: 20px;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    form {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    textarea {
+        height: 100px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #1abc9c;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    
+    button:hover {
+        background-color: #16a085;
+    }
+    
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* Form container */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 18px;
+    color: #34495e;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #16a085;
+}
+
+#addQuestionBtn {
+    background-color: #f39c12;
+    margin-top: 20px;
+}
+
+#addQuestionBtn:hover {
+    background-color: #e67e22;
+}
+
+/* Modal for adding new question */
+#questionsContainer {
+    margin-bottom: 20px;
+}
+
+/* Question Group */
+.question-group {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-group label {
+    font-size: 16px;
+    color: #34495e;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.question-group input,
+.question-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.question-group input:focus,
+.question-group select:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .side-bar {
+        width: 200px;
+        padding: 20px;
+    }
+
+    .content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Recallify</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Barre latérale */
+        .side-bar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side-bar h2 {
+            margin-bottom: 20px;
+        }
+
+        .side-bar a {
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .side-bar button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            background: #34495e;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .side-bar button:hover {
+            background: #1abc9c;
+        }
+
+        /* Contenu principal */
+        .content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Informations utilisateur */
+        #userName {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #userFullName, #userEmail, #userJoined {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        /* Photo de profil */
+        #profilePic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tableau des quiz */
+        table {
+            width: 80%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+        .modal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            margin: 10% auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+        }
+ 
+    </style>
+</head>
+<body>
+    <!-- Barre latérale -->
+    <div class="side-bar">
+        <h2>Menu</h2>
+        <a href="../index.html"><button>Home</button></a>
+        <a href="myQuiz.html"><button>My Quizzes</button></a>
+        <a href="profile.html"><button>Profile</button></a>
+        <button id="openSettings">⚙️ Paramètres</button>
+
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1 id="userName">Nom d'utilisateur</h1>
+        <p id="userFullName">Nom complet</p>
+        <p id="userEmail">Email</p>
+        <p id="userJoined">Membre depuis</p>
+        <img id="profilePic" src="" alt="Photo de profil">
+
+        <!-- Historique des quiz -->
+        <table id="quizTable">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSettings">&times;</span>
+            <h2>Modifier le profil</h2>
+            <form id="editProfileForm">
+                <label for="editFullName">Nom complet :</label>
+                <input type="text" id="editFullName" required>
+    
+                <label for="editEmail">Email :</label>
+                <input type="email" id="editEmail" required>
+    
+                <label for="editProfilePic">URL de la photo de profil :</label>
+                <input type="text" id="editProfilePic">
+    
+                <button type="submit">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="../app.js"></script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            loadProfile();
+        });
+    </script>
+</body>
+</html>
